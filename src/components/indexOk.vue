@@ -3,9 +3,8 @@
     <div class="common-layout">
         <el-container>
             <el-header>
-                
                 <ul id="searchUl">
-                    <li><el-input  v-model="searchWhat" placeholder="请输入内容" id="searchInput" @focus="isShow = true" @blur="isShow = false"></el-input><el-button style="font-size:24px;"  :icon="Search" /></li>
+                    <li><el-input  v-model="searchWhat" placeholder="请输入内容" id="searchInput" @focus="isShow = true" @blur="isShow = false"></el-input><el-button @click="sendRequst" style="font-size:24px;"  :icon="Search" /></li>
                     <li v-for="item in responseList" :key="item.id" class="showli" v-show="isShow"><a href="#">{{item.text}}</a></li>
                 </ul>
             </el-header>
@@ -73,13 +72,7 @@
 
 <style scoped>
 
-li {
-    list-style: none;
-}
-a {
-    text-decoration: none;
-    color: black;
-}
+
 .el-button {
     width: 50px;
     height: 50px;
@@ -108,10 +101,17 @@ a {
     background-color: rgb(200, 200, 200);
 }
 #searchUl {
-    position: relative;
+    /* position: relative;
+     */
+    padding: 0;
+    position: absolute;
+    left: 50%;
+    z-index: 999;
     /* height: 100px; */
     width: 650px;
-    margin: 0 auto;
+    /* margin: 0 auto; */
+    margin-left: -325px;
+    margin-top: 0;
     background-color: #B3C0D1;
 }
 .el-container {
@@ -167,13 +167,13 @@ import {
 } from '@element-plus/icons-vue'
 // import 'element-plus/dist/index.css'
 import axios from 'axios'
-// import { useRouter } from 'vue-router'
+import { useRouter } from 'vue-router'
 import { mapState } from 'vuex';
-// const router = useRouter()
+const router = useRouter()
 
-// let open = name => {
-//     router.push("/" + name)
-// }
+let open = name => {
+    router.push("/" + name)
+}
 
 
 
